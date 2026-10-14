@@ -1,0 +1,51 @@
+name: Evals
+
+# Evals call the Claude API and cost money, so they run only on demand.
+# Requires the repository secret ANTHROPIC_API_KEY.
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: Runs per case (more runs = steadier scores, higher cost)
+        default: "3"
+      max_cost_usd:
+        description: Hard spending cap for the whole run, in US dollars
+        default: "20"
+
+permissions:
+  contents: read
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+
+      - name: Run plugin evals
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RUNS: ${{ inputs.runs }}
+          MAX_COST: ${{ inputs.max_cost_usd }}
+        working-directory: plugins/impax-crm
+        run: |
+          npm install --global --ignore-scripts @anthropic-ai/claude-code@2.1.299
+          # --ignore-scripts keeps dependency install scripts from running; run only
+          # Claude Code's own installer, which fetches its native binary.
+          node "$(npm root --global)/@anthropic-ai/claude-code/install.cjs"
+          claude plugin eval . --trust-plugin --no-publish \
+            --runs "$RUNS" --max-cost-usd "$MAX_COST" \
+            --threshold 0.8 --json results.json
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: eval-results
+          path: plugins/impax-crm/evals/results/
+          retention-days: 30

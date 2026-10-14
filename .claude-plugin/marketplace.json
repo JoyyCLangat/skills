@@ -1,0 +1,16 @@
+{
+  "name": "impax-skills",
+  "description": "Impax Africa CRM skills for Claude",
+  "owner": {
+    "name": "Joy Langat",
+    "url": "https://github.com/JoyyCLangat"
+  },
+  "plugins": [
+    {
+      "name": "impax-crm",
+      "source": "./plugins/impax-crm",
+      "description": "Skills and safety guard for CRM work at Impax Africa: Dynamics 365, Dataverse, and Power Platform delivery, from client discovery to UAT, releases, and client comms.",
+      "category": "productivity"
+    }
+  ]
+}

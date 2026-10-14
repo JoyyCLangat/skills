@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell|Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/plugins/impax-crm/hooks/run-guard.sh\"",
+            "timeout": 30,
+            "statusMessage": "impax-crm guard"
+          }
+        ]
+      }
+    ]
+  }
+}

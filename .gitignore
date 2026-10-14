@@ -1,0 +1,23 @@
+# Eval run output (reports can contain full transcripts)
+plugins/impax-crm/evals/results/
+plugins/impax-crm/results.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local secrets and data: never commit these
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.key
+local.settings.json
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
