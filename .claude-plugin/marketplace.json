@@ -1,0 +1,14 @@
+{
+  "name": "impax-skills",
+  "description": "Impax Africa CRM skills",
+  "owner": {
+    "name": "Joy Langat"
+  },
+  "plugins": [
+    {
+      "name": "impax-crm",
+      "source": "./plugins/impax-crm",
+      "description": "Skills for CRM work at Impax Africa: Dynamics 365, Dataverse and Power Platform delivery, plus client discovery, UAT, releases and client comms."
+    }
+  ]
+}

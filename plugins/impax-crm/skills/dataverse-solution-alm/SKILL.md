@@ -9,7 +9,7 @@ description: Application lifecycle management for Dynamics 365 / Dataverse solut
 
 - **Everything goes in a solution** with the company/client **publisher prefix** — never build in the Default Solution.
 - **Unmanaged in Dev only. Managed everywhere else** (Test, UAT, Prod).
-- **No direct edits in Prod.** If an emergency change happened, record it and back-port to Dev the same day (see `session-handoff` Gotchas).
+- **No direct edits in Prod.** If an emergency change happened, record it and back-port to Dev the same day.
 - **Environment-specific values** (URLs, IDs, emails, API endpoints) live in **environment variables**; connections in **connection references**. Never hard-code them in flows, plugins, or JS.
 - **Add only what you changed** when adding existing components (e.g. for Account, add only the new columns/forms — not "Include all objects"), to avoid overwriting other solutions' layers.
 

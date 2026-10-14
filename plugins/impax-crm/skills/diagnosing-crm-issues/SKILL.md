@@ -5,7 +5,7 @@ description: Hypothesis-driven diagnosis of Dynamics 365 / Dataverse / Power Pla
 
 # Diagnosing CRM Issues
 
-Inspired by `troubleshooting` in [tobilafinhangit/skill-master](https://github.com/tobilafinhangit/skill-master) and Matt Pocock's MIT-licensed `diagnosing-bugs`. Re-written for Dynamics 365 and the Power Platform.
+Inspired by `troubleshooting` in [tobilafinhangit/skill-master](https://github.com/tobilafinhangit/skill-master). Written for Dynamics 365 and the Power Platform.
 
 Debugging is not guessing. No reproduction → no hypothesis.
 
@@ -63,4 +63,4 @@ The reporter is rarely the only one affected. Write a FetchXML/OData/Dataverse q
 
 ## Phase 7 — Close out
 
-State the confirmed root cause in one sentence for the ticket. Ask: what would have caught this earlier (a UAT script step, a flow failure alert, a role test)? File it with `loose-ends` if it isn't done now.
+State the confirmed root cause in one sentence for the ticket. Ask: what would have caught this earlier (a UAT script step, a flow failure alert, a role test)? Add it to the ticket as a follow-up if it isn't done now.

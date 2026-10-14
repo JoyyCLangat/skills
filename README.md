@@ -1,69 +1,82 @@
-# skills
+# Impax CRM skills
 
-Agent skills (Claude Code, Cursor, and other `SKILL.md`-compatible agents) for CRM work at Impax Africa: Microsoft Dynamics 365, Dataverse, and the Power Platform, plus the delivery workflow around them (discovery, specs, UAT, releases, client comms).
+Agent skills for CRM work at Impax Africa: Microsoft Dynamics 365, Dataverse, and the Power Platform, plus the delivery work around them (discovery, specs, UAT, releases, and client comms).
 
-Each skill lives in `skills/<skill-name>/SKILL.md`. `.claude/skills` is a symlink to `skills/`, so Claude Code picks them up automatically when you work inside this repo.
+They're packaged as a Claude Code **plugin** (`impax-crm`). Install it once and Claude picks the right skill automatically in every session. You don't need to remember skill names.
+
+## Install (once per computer)
+
+In Claude Code, run:
+
+```
+/plugin install impax-crm --marketplace JoyyCLangat/skills
+```
+
+Or from a terminal:
+
+```bash
+claude plugin marketplace add JoyyCLangat/skills
+claude plugin install impax-crm@impax-skills
+```
+
+To get updates, run `/plugin marketplace update impax-skills`.
+
+### Claude Code on the web (cloud sessions)
+
+- **Sessions on this repo** load the skills automatically through `.claude/skills`.
+- **Sessions on other repos:** add this to that repo's `.claude/settings.json`:
+
+  ```json
+  {
+    "extraKnownMarketplaces": {
+      "impax-skills": { "source": { "source": "github", "repo": "JoyyCLangat/skills" } }
+    },
+    "enabledPlugins": { "impax-crm@impax-skills": true }
+  }
+  ```
 
 ## Skills
 
-### Delivery workflow
-
 | Skill | Use it when |
 |---|---|
-| `crm-requirements-discovery` | Turning a client brief, workshop notes, or RFP into a requirements register with fit-gap against out-of-the-box Dynamics 365. |
-| `grilling` | Stress-testing a plan, design, or estimate through rounds of questions until nothing is assumed. |
-| `functional-spec-to-tickets` | Turning agreed requirements into build-ready user stories with Dataverse design and acceptance criteria. |
-| `crm-impact-analysis` | Before renaming, deleting, or changing a column, table, choice, role, plugin, or flow. |
-| `uat-test-scripts` | Writing UAT scripts and trackers, and triaging UAT feedback. |
-| `crm-release-notes` | Writing client "what's new" notes and an internal deployment note. |
-| `client-comms` | Drafting client emails: status updates, UAT invites, go-live/downtime notices, incidents, change requests. |
+| `impax-crm-context` | Starting any Impax or Dynamics task. It loads the Impax playbook, explains things in plain language, picks the right skill, and records new Impax conventions as they come up. |
+| `crm-requirements-discovery` | You have a client brief, workshop notes, or an RFP, and need a requirements register with fit-gap against out-of-the-box Dynamics 365. |
+| `functional-spec-to-tickets` | You're turning agreed requirements into build-ready user stories with acceptance criteria. |
+| `crm-impact-analysis` | You're about to rename, delete, or change a column, table, choice, role, plugin, or flow. |
+| `uat-test-scripts` | You're writing UAT scripts and trackers, or triaging UAT feedback. |
+| `crm-release-notes` | You need a client "what's new" note and an internal deployment note. |
+| `client-comms` | You're drafting a client email: status update, UAT invite, go-live or downtime notice, incident, or change request. |
+| `dataverse-solution-alm` | You're working with solutions, publishers, the `pac` CLI, environment variables, or Dev → Test → Prod deployments. |
+| `dynamics-plugin-development` | You're writing, registering, testing, or reviewing C# plugins or Custom APIs. |
+| `power-automate-flows` | You're building, reviewing, or fixing cloud flows on Dataverse. |
+| `model-driven-app-customization` | You're changing forms, views, business rules, BPFs, the command bar, JavaScript, or PCF controls. |
+| `dataverse-queries` | You need FetchXML, Web API/OData, flow filters, or TDS SQL. |
+| `crm-data-migration` | You're planning or running a data migration: mapping, cleansing, load order, and reconciliation. |
+| `crm-security-model` | You're designing or troubleshooting BUs, roles, teams, or field security, or checking data-protection requirements. |
+| `crm-integrations` | You're connecting CRM to an ERP, M-Pesa (Daraja), an SMS gateway, or a portal. |
+| `diagnosing-crm-issues` | Something is broken, slow, or "can't see", and you need to debug it hypothesis-first. |
 
-### Dynamics 365 / Power Platform engineering
+## The Impax playbook (learns as you work)
 
-| Skill | Use it when |
-|---|---|
-| `dataverse-solution-alm` | Working with solutions, publishers, `pac` CLI, source control, environment variables, and Dev → Test → Prod deployments. |
-| `dynamics-plugin-development` | Writing, registering, testing, or reviewing C# plugins and Custom APIs. |
-| `power-automate-flows` | Building, reviewing, or fixing cloud flows on Dataverse. |
-| `model-driven-app-customization` | Working on forms, views, business rules, BPFs, the command bar, JavaScript web resources, or PCF controls. |
-| `dataverse-queries` | Writing FetchXML, Web API/OData, flow filters, or TDS SQL queries. |
-| `crm-data-migration` | Planning or running migrations: mapping, cleansing, load order, upserts, and reconciliation. |
-| `crm-security-model` | Designing or troubleshooting BUs, roles, teams, and field security, and covering data-protection requirements. |
-| `crm-integrations` | Integrating with ERPs, M-Pesa (Daraja), SMS gateways, and portals through the Web API, Service Bus, Functions, or flows. |
-| `diagnosing-crm-issues` | Debugging hypothesis-first: plugin errors, failing flows, permission problems, slow forms, broken integrations. |
+`plugins/impax-crm/skills/impax-crm-context/references/impax-playbook.md` collects Impax conventions as they come up in sessions: tools, naming, process, and glossary. At the end of a task, Claude offers to add anything new, through a pull request you approve.
 
-### Working with agents
+**This repo is public.** Never put client names, environment URLs, credentials, personal data, or pricing in it. Make the repo private if you want to keep client-specific knowledge here too.
 
-| Skill | Use it when |
-|---|---|
-| `session-handoff` | Parking work in a pickup note for the next session or a colleague. |
-| `loose-ends` | Sweeping a session for unfinished follow-ups and temporary changes before you close it out. |
-| `writing-great-skills` | Creating or editing skills in this repo. |
+## Repo layout
 
-## Install
-
-**In this repo:** open it in Claude Code. The skills load from `.claude/skills`.
-
-**Everywhere (personal):**
-
-```bash
-git clone https://github.com/JoyyCLangat/skills.git ~/code/skills
-mkdir -p ~/.claude/skills
-for d in ~/code/skills/skills/*/; do ln -sfn "$d" ~/.claude/skills/"$(basename "$d")"; done
+```
+.claude-plugin/marketplace.json        # makes this repo installable as a marketplace
+plugins/impax-crm/.claude-plugin/plugin.json
+plugins/impax-crm/skills/<skill>/SKILL.md
+.claude/skills -> plugins/impax-crm/skills   # loads the skills when you work in this repo
+scripts/validate-skills.sh
 ```
 
-**Into one project:** copy (or symlink) the skill folders you want into that project's `.claude/skills/`.
+## Adding or changing a skill
 
-## Adding a skill
+1. Create `plugins/impax-crm/skills/<name>/SKILL.md`. Its frontmatter needs a `name` that matches the folder, and a `description` that says what the skill does and when to use it.
+2. Add the skill to the table above.
+3. Run `./scripts/validate-skills.sh` and `claude plugin validate .`.
+4. Bump `version` in `plugins/impax-crm/.claude-plugin/plugin.json`.
 
-Follow `skills/writing-great-skills/SKILL.md`, add the skill to the table above, then run:
-
-```bash
-./scripts/validate-skills.sh
-```
-
-Never put client names, tenant URLs, credentials, or customer data in a skill. Use `{PLACEHOLDERS}`.
-
-## Credits
-
-Several workflow skills are adapted from or inspired by [tobilafinhangit/skill-master](https://github.com/tobilafinhangit/skill-master) and [Matt Pocock's skills](https://github.com/mattpocock/skills) (MIT). Each `SKILL.md` names its source. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Some skills borrow workflow ideas from [tobilafinhangit/skill-master](https://github.com/tobilafinhangit/skill-master). Each one names its source.

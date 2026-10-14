@@ -1,0 +1,8 @@
+{
+  "name": "impax-crm",
+  "version": "1.0.0",
+  "description": "Skills for CRM work at Impax Africa: Dynamics 365, Dataverse and Power Platform delivery, plus client discovery, UAT, releases and client comms.",
+  "author": {
+    "name": "Joy Langat"
+  }
+}

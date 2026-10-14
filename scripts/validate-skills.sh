@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Checks every skills/<name>/SKILL.md has frontmatter with a matching name and a description.
+# Checks every plugins/impax-crm/skills/<name>/SKILL.md has frontmatter with a matching name and a description.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 fail=0
-for dir in skills/*/; do
+for dir in plugins/impax-crm/skills/*/; do
   name=$(basename "$dir")
   file="$dir/SKILL.md"
   if [[ ! -f "$file" ]]; then echo "✗ $name: missing SKILL.md"; fail=1; continue; fi
