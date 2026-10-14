@@ -51,5 +51,8 @@ jobs:
       - name: Claude Code plugin validation (strict)
         run: |
           npm install --global --ignore-scripts @anthropic-ai/claude-code@2.1.299
+          # --ignore-scripts keeps dependency install scripts from running; run only
+          # Claude Code's own installer, which fetches its native binary.
+          node "$(npm root --global)/@anthropic-ai/claude-code/install.cjs"
           claude plugin validate --strict .
           claude plugin validate --strict plugins/impax-crm

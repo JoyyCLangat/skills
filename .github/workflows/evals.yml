@@ -36,6 +36,9 @@ jobs:
         working-directory: plugins/impax-crm
         run: |
           npm install --global --ignore-scripts @anthropic-ai/claude-code@2.1.299
+          # --ignore-scripts keeps dependency install scripts from running; run only
+          # Claude Code's own installer, which fetches its native binary.
+          node "$(npm root --global)/@anthropic-ai/claude-code/install.cjs"
           claude plugin eval . --trust-plugin --no-publish \
             --runs "$RUNS" --max-cost-usd "$MAX_COST" \
             --threshold 0.8 --json results.json
