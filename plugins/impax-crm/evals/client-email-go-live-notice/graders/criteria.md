@@ -2,5 +2,5 @@
 type: llm
 ---
 
-PASS if the reply contains a draft email with the date, a time window with a timezone (EAT or similar), what users should expect or do, and a contact for questions, and does not claim the email was sent.
-FAIL if the reply omits the time window or timezone, invents commitments not in the prompt, or says the email was sent.
+PASS if the reply contains a draft email to the client's staff that states the Saturday 8pm to 10pm window with a timezone, tells users what to expect or do, and gives a way to get help. Bracketed placeholders such as [TBC] or [contact] for unknown details are acceptable and expected, and so is resolving "this Saturday" to a calendar date.
+FAIL if the draft omits the time window or the timezone, or the reply says the email has been sent.

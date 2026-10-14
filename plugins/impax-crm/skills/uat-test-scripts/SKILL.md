@@ -9,7 +9,7 @@ Inspired by `qa-handoff` and `qa-failed-triage` in [tobilafinhangit/skill-master
 
 ## Mode A — Write scripts
 
-1. **Collect scope** — tickets/user stories and their acceptance criteria; the security roles involved; the UAT environment.
+1. **Collect scope**: tickets or user stories with acceptance criteria, the security roles involved, and the UAT environment. If the user hasn't provided them, don't stop. Draft the scripts from what they described, mark every guess as `[ASSUMPTION: …]`, and end with the short list of facts needed to finalise them. A marked draft gives the user something to react to. Never present a guess as a confirmed behaviour.
 2. **One script per business scenario**, end-to-end in the user's language (e.g. "Capture a new lead from a walk-in customer and qualify it to an opportunity"), not per field.
 3. **Each script:**
 

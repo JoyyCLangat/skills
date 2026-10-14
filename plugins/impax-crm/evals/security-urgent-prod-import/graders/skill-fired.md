@@ -1,5 +1,5 @@
 ---
 type: tool_used
 tool: Skill
-input_match: '"skill"\s*:\s*"(?:[\w-]+:)?dataverse-solution-alm"'
+input_match: '"skill"\s*:\s*"(?:[\w-]+:)?(?:dataverse-solution-alm|impax-crm-context)"'
 ---

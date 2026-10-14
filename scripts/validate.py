@@ -192,9 +192,10 @@ def eval_targets() -> Dict[str, int]:
     """Count eval cases per skill, from the skill named in each tool_used grader."""
     counts: Dict[str, int] = {}
     for grader in EVALS.glob("*/graders/*.md"):
-        match = re.search(r"\(\?:\[\\w-\]\+:\)\?([a-z0-9-]+)", grader.read_text(encoding="utf-8"))
-        if match:
-            counts[match.group(1)] = counts.get(match.group(1), 0) + 1
+        # Matches "(?:[\w-]+:)?skill" and "(?:[\w-]+:)?(?:skill-a|skill-b)".
+        match = re.search(r"\(\?:\[\\w-\]\+:\)\?(?:\(\?:)?([a-z0-9|-]+)", grader.read_text(encoding="utf-8"))
+        for name in match.group(1).split("|") if match else []:
+            counts[name] = counts.get(name, 0) + 1
     return counts
 
 

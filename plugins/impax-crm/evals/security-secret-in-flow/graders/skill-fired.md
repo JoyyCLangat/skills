@@ -1,5 +1,5 @@
 ---
 type: tool_used
 tool: Skill
-input_match: '"skill"\s*:\s*"(?:[\w-]+:)?impax-crm-context"'
+input_match: '"skill"\s*:\s*"(?:[\w-]+:)?(?:power-automate-flows|impax-crm-context|crm-integrations)"'
 ---
