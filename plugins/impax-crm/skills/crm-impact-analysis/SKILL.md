@@ -1,6 +1,6 @@
 ---
 name: crm-impact-analysis
-description: Map the blast radius of a Dynamics 365 / Dataverse change BEFORE making it — deleting or changing a column, table, choice/option set, relationship, security role, business process flow, plugin step, flow, or form. Use when the user plans to rename, delete, retype, or change behaviour of anything other components may depend on.
+description: "Maps the blast radius of a Dynamics 365 / Dataverse change before it is made: deleting, renaming, or retyping a column, table, choice, relationship, security role, business process flow, plugin step, flow, or form. Use when the user plans to change or remove anything that reports, flows, code, integrations, or other components may depend on."
 ---
 
 # CRM Impact Analysis

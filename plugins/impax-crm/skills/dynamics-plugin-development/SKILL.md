@@ -1,6 +1,6 @@
 ---
 name: dynamics-plugin-development
-description: Write, register, debug, and test C# plugins and custom APIs for Dynamics 365 / Dataverse — execution pipeline stages, pre/post images, filtering attributes, depth and recursion, tracing, sandbox limits, plugin packages, and unit testing. Use when the user is writing or reviewing a plugin, registering a step in the Plugin Registration Tool, creating a Custom API, or deciding between a plugin and a flow.
+description: "Writes, registers, debugs, and tests C# plugins and Custom APIs for Dynamics 365 / Dataverse: pipeline stages, pre and post images, filtering attributes, recursion and depth, tracing, sandbox limits, plugin packages, and unit tests. Use when the user is writing or reviewing a plugin, registering a step in the Plugin Registration Tool, creating a Custom API, or choosing between a plugin and a flow."
 ---
 
 # Dynamics Plugin Development

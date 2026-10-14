@@ -1,6 +1,6 @@
 ---
 name: crm-security-model
-description: Design, review, and troubleshoot Dynamics 365 / Dataverse security — business units, security roles and privilege depth, owner/access/Entra ID group teams, field-level security, hierarchy security, sharing, app access, and auditing — including data-protection requirements. Use when designing roles for a new implementation, a user can't see or edit something (or sees too much), onboarding users, or preparing a security/access review.
+description: "Designs, reviews, and troubleshoots Dynamics 365 / Dataverse security: business units, security roles and privilege depth, owner, access, and Entra ID group teams, field-level and hierarchy security, sharing, app access, auditing, and data-protection duties such as the Kenya Data Protection Act. Use when designing roles, onboarding users, preparing an access review, or when a user cannot see or edit a record or sees too much."
 ---
 
 # CRM Security Model

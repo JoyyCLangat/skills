@@ -1,6 +1,6 @@
 ---
 name: crm-integrations
-description: Design and build integrations between Dynamics 365 / Dataverse and other systems — ERPs (Business Central, Finance & Operations, Sage), core banking/insurance systems, M-Pesa (Daraja API), SMS gateways, websites and portals — using the Dataverse Web API with app registrations, webhooks, Azure Service Bus, Azure Functions/Logic Apps, Power Automate, virtual tables, or dual-write. Use when the user needs to sync data in or out of CRM, receive callbacks, choose an integration pattern, or debug an integration.
+description: "Designs and builds integrations between Dynamics 365 / Dataverse and other systems: ERPs (Business Central, Finance and Operations, Sage), core banking or insurance systems, M-Pesa (Daraja API), SMS gateways, websites and portals, using the Dataverse Web API with app registrations, webhooks, Azure Service Bus, Azure Functions, Logic Apps, Power Automate, virtual tables, or dual-write. Use when the user needs to sync data in or out of CRM, receive payment callbacks, choose an integration pattern, or debug an integration."
 ---
 
 # CRM Integrations
@@ -50,7 +50,7 @@ Common flows: **STK Push** (Lipa na M-Pesa Online) to request payment from a cus
 - Treat the M-Pesa receipt/transaction ID as the idempotency key; store it in a payment table with an alternate key.
 - Match payments to CRM records by account reference (e.g. invoice/loan number); park unmatched payments in a review queue rather than guessing.
 - Use Safaricom's sandbox for Dev/Test; production credentials per environment in Key Vault.
-- Phone numbers in `2547XXXXXXXX` format for Daraja.
+- Phone numbers go to Daraja as `254` plus the 9-digit subscriber number, with no `+` or leading `0` (`2547XXXXXXXX` or `2541XXXXXXXX`). Normalise and validate before sending.
 
 Always confirm current endpoint details against Safaricom's Daraja documentation — don't rely on memory.
 

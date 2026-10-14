@@ -1,6 +1,6 @@
 ---
 name: dataverse-solution-alm
-description: Application lifecycle management for Dynamics 365 / Dataverse solutions — solution and publisher setup, managed vs unmanaged, segmentation, patches and upgrades, environment variables and connection references, source control with the pac CLI, and deployments Dev → Test/UAT → Prod (pipelines, Azure DevOps, GitHub Actions). Use when creating a solution, exporting/importing/unpacking solutions, setting up CI/CD, planning a deployment, or fixing a failed solution import.
+description: "Guides application lifecycle management for Dynamics 365 / Dataverse solutions: solution and publisher setup, managed versus unmanaged, segmentation, upgrades and patches, environment variables and connection references, source control with the pac CLI, and Dev to Test to Prod deployments with pipelines, Azure DevOps, or GitHub Actions. Use when creating, exporting, unpacking, or importing a solution, setting up CI/CD, planning a deployment, or fixing a failed import."
 ---
 
 # Dataverse Solution ALM

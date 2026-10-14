@@ -1,6 +1,6 @@
 ---
 name: uat-test-scripts
-description: Generate User Acceptance Testing (UAT) scripts and a test tracker from CRM user stories, acceptance criteria, or a release scope, and triage UAT feedback into bugs, change requests, and training issues. Use when preparing UAT, writing test cases, building a test plan for a Dynamics 365 release, or processing a batch of UAT feedback.
+description: "Writes User Acceptance Testing scripts and a test tracker from CRM user stories, acceptance criteria, or a release scope, and triages UAT feedback into bugs, environment issues, training needs, and change requests. Use when preparing UAT, writing test cases, building a test plan for a Dynamics 365 release, or processing a batch of UAT feedback."
 ---
 
 # UAT Test Scripts

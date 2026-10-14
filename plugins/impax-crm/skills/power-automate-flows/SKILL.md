@@ -1,6 +1,6 @@
 ---
 name: power-automate-flows
-description: Design, build, review, and fix Power Automate cloud flows on Dataverse / Dynamics 365 — triggers and trigger conditions, error handling (try/catch scopes), loops and concurrency, pagination, child flows, connection references, run-only users, API limits, and avoiding infinite loops. Use when the user is building or reviewing a flow, a flow is failing or slow, or they ask whether to use a flow vs a plugin.
+description: "Designs, builds, reviews, and fixes Power Automate cloud flows on Dataverse / Dynamics 365: triggers and trigger conditions, try-catch error handling, loops and concurrency, pagination, child flows, connection references, run-only users, API limits, and infinite-loop prevention. Use when the user is building or reviewing a flow, a flow is failing or slow, or they ask whether to use a flow or a plugin."
 ---
 
 # Power Automate Flows (Dataverse)

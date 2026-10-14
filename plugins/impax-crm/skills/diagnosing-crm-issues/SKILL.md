@@ -1,6 +1,6 @@
 ---
 name: diagnosing-crm-issues
-description: Hypothesis-driven diagnosis of Dynamics 365 / Dataverse / Power Platform problems — plugin errors, failing Power Automate flows, form script errors, "user can't see/edit record", slow forms or views, integration failures. Use when the user reports something broken, throwing, missing, or slow in CRM, or says "debug", "diagnose", "why is this happening".
+description: "Diagnoses Dynamics 365 / Dataverse / Power Platform problems with a reproduce-first, hypothesis-driven method: plugin errors, failing Power Automate flows, form script errors, users who cannot see or edit records, slow forms or views, and integration failures. Use when the user reports something broken, erroring, missing, or slow in CRM, or asks to debug or diagnose an issue."
 ---
 
 # Diagnosing CRM Issues

@@ -1,6 +1,6 @@
 ---
 name: model-driven-app-customization
-description: Customise Dynamics 365 model-driven apps — forms, views, business rules, business process flows, command bar (modern commanding with Power Fx or JavaScript), JavaScript web resources using formContext and Xrm.WebApi, and PCF controls. Use when the user asks to change a form, write or review form JavaScript, hide/require/default fields, add a button, build a BPF, or fix a form script error.
+description: "Customises Dynamics 365 model-driven apps: forms, views, business rules, business process flows, the command bar with Power Fx or JavaScript, JavaScript web resources using formContext and Xrm.WebApi, and PCF controls. Use when the user asks to change a form, show, hide, require, or default a field, add a button, build a business process flow, or write, review, or fix form JavaScript."
 ---
 
 # Model-Driven App Customisation

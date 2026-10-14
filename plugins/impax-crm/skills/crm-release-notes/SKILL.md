@@ -1,6 +1,6 @@
 ---
 name: crm-release-notes
-description: Generate release notes for a Dynamics 365 / Power Platform deployment — a client-facing "what's new" for end users and an internal technical deployment note (solutions, versions, steps, rollback). Use when a batch of CRM work is ready to deploy or has been deployed, or the user asks for release notes, a changelog, or a deployment summary.
+description: "Writes release notes for a Dynamics 365 / Power Platform deployment: a client-facing what's-new note for end users and an internal deployment note with solutions, versions, steps, and rollback plan. Use when a batch of CRM work is ready to deploy or has been deployed, or the user asks for release notes, a changelog, or a deployment summary."
 ---
 
 # CRM Release Notes

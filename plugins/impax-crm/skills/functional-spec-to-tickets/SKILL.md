@@ -1,6 +1,6 @@
 ---
 name: functional-spec-to-tickets
-description: Convert agreed CRM requirements or a functional design into build-ready tickets (Azure DevOps / Jira user stories) with Dataverse design, acceptance criteria, and test notes — then review them from a technical-lead, functional-consultant, and end-user angle. Use when the user wants to groom requirements, write user stories, break a feature into tasks, or review tickets before the team builds them.
+description: "Converts agreed CRM requirements or a functional design into build-ready user stories for Azure DevOps or Jira, with Dataverse design, Given-When-Then acceptance criteria, and test notes, then reviews them as a technical lead, functional consultant, and end user would. Use when the user wants to groom requirements, write user stories, break a feature into tasks, or review tickets before the team builds them."
 ---
 
 # Functional Spec → Tickets

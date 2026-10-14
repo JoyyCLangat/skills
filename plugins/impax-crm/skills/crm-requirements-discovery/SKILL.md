@@ -1,6 +1,6 @@
 ---
 name: crm-requirements-discovery
-description: Turn a client brief, workshop notes, call transcript, RFP, or email thread into a structured CRM requirements list with a fit-gap analysis against Dynamics 365 / Power Platform out-of-the-box features. Use when starting a new CRM implementation or change request, preparing for a discovery workshop, or when the user pastes raw client requirements.
+description: "Turns a client brief, workshop notes, call transcript, RFP, or email thread into a CRM requirements register with a fit-gap analysis against out-of-the-box Dynamics 365 and Power Platform features, then stress-tests the design. Use when starting a CRM implementation or change request, preparing a discovery workshop, or when the user pastes raw client requirements."
 ---
 
 # CRM Requirements Discovery
@@ -41,4 +41,4 @@ A markdown table (offer CSV/xlsx if they want it in Excel):
 
 Then: open questions list, risks, and a 3-line summary (counts per fit-gap class; biggest risks).
 
-Next step: `functional-spec-to-tickets` once the client agrees the register.
+Next steps: `grilling` on the high-risk rows; `functional-spec-to-tickets` once the client agrees the register.

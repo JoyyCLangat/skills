@@ -1,6 +1,6 @@
 ---
 name: client-comms
-description: Draft client-facing emails and messages for CRM projects and support — status updates, UAT invitations, go-live and downtime notices, incident updates and RCAs, change-request responses, scope pushback, training invites, and replies to support tickets. Use when the user says "draft an email to the client", "reply to <client>", "write the go-live notice", or pastes a client message to respond to.
+description: "Drafts client-facing emails and messages for CRM projects and support: status updates, UAT invitations, go-live and downtime notices, incident updates and RCAs, change-request replies, scope pushback, and support-ticket replies. Use when the user asks to draft or reply to a client email, write a go-live or downtime notice, or pastes a client message that needs a response."
 ---
 
 # Client Comms

@@ -1,6 +1,6 @@
 ---
 name: crm-data-migration
-description: Plan and run data migration into Dynamics 365 / Dataverse from legacy CRMs, Excel, ERPs, or core systems — source analysis, field mapping, cleansing and de-duplication, load order, alternate keys and upserts, owners and dates, tool choice (Import wizard, Configuration Migration Tool, Dataflows, KingswaySoft/SSIS, Azure Data Factory), and reconciliation. Use when the user is migrating, importing, or bulk-loading data, writing a mapping document, or reconciling counts after a load.
+description: "Plans and runs data migration into Dynamics 365 / Dataverse from legacy CRMs, Excel, ERPs, or core systems: source analysis, field mapping, cleansing and de-duplication, load order, alternate keys and upserts, owners and dates, tool choice (Import wizard, Configuration Migration Tool, Dataflows, KingswaySoft/SSIS, Azure Data Factory), and reconciliation. Use when the user is migrating, importing, or bulk-loading data, writing a mapping document, or reconciling counts after a load."
 ---
 
 # CRM Data Migration
@@ -14,7 +14,7 @@ description: Plan and run data migration into Dynamics 365 / Dataverse from lega
 |---|---|---|---|---|---|---|---|
 
    Include choice mappings (source value → option value), lookup resolution (by alternate key or legacy ID column), and owner mapping (legacy user → Dataverse user/team).
-3. **Cleanse and de-duplicate** before loading: phone numbers to one format (e.g. E.164 `+2547XXXXXXXX`), emails lower-cased and validated, names trimmed, national ID / KRA PIN formats, merge duplicates on an agreed rule. Report counts of what was fixed and rejected.
+3. **Cleanse and de-duplicate** before loading: phone numbers to one format (E.164, e.g. `+2547XXXXXXXX` or `+2541XXXXXXXX` for Kenya), emails lower-cased and validated, names trimmed, national ID / KRA PIN formats, merge duplicates on an agreed rule. Report counts of what was fixed and rejected.
 4. **Keys.** Add a `<prefix>_legacyid` column + **alternate key** on each migrated table so loads are re-runnable **upserts** and lookups resolve without GUIDs.
 5. **Load order** (parents before children):
    1. Business units, users, teams (and their roles)

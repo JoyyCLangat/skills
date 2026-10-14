@@ -1,8 +1,13 @@
 {
   "name": "impax-crm",
+  "displayName": "Impax CRM",
   "version": "1.0.0",
-  "description": "Skills for CRM work at Impax Africa: Dynamics 365, Dataverse and Power Platform delivery, plus client discovery, UAT, releases and client comms.",
+  "description": "Skills and safety guard for CRM work at Impax Africa: Dynamics 365, Dataverse, and Power Platform delivery, from client discovery to UAT, releases, and client comms.",
   "author": {
-    "name": "Joy Langat"
-  }
+    "name": "Joy Langat",
+    "url": "https://github.com/JoyyCLangat"
+  },
+  "homepage": "https://github.com/JoyyCLangat/skills#readme",
+  "repository": "https://github.com/JoyyCLangat/skills",
+  "keywords": ["dynamics-365", "dataverse", "power-platform", "power-automate", "crm", "impax", "kenya"]
 }

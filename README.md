@@ -1,46 +1,38 @@
 # Impax CRM skills
 
-Agent skills for CRM work at Impax Africa: Microsoft Dynamics 365, Dataverse, and the Power Platform, plus the delivery work around them (discovery, specs, UAT, releases, and client comms).
+A Claude plugin for CRM work at Impax Africa: Microsoft Dynamics 365, Dataverse, and the Power Platform, plus the delivery work around them (discovery, specs, UAT, releases, and client comms).
 
-They're packaged as a Claude Code **plugin** (`impax-crm`). Install it once and Claude picks the right skill automatically in every session. You don't need to remember skill names.
+Install it once. Claude then picks the right skill from what you ask, so you don't need to remember skill names. In Claude Code, a guard also stops secrets leaking and asks before anything changes a live environment.
 
-## Install (once per computer)
+## Install
 
-In Claude Code, run:
+### Everywhere: claude.ai, the desktop app, Cowork, and Claude Code (recommended)
+
+1. Open [claude.ai → Customize → Plugins](https://claude.ai/customize/plugins) (or **Customize** in the Claude desktop app).
+2. Choose **Add → Add marketplace** and enter `JoyyCLangat/skills`.
+3. Add the **impax-crm** plugin, then turn on **Sync automatically** so you get updates.
+
+The plugin is saved to your account. Its skills work in chat, Cowork, and Claude Code sessions signed in with the same account, including cloud sessions. Run `/reload-plugins` in a Claude Code session that was already open.
+
+### Claude Code only, on one computer
 
 ```
 /plugin install impax-crm --marketplace JoyyCLangat/skills
 ```
 
-Or from a terminal:
+Update later with `claude plugin update impax-crm@impax-skills`.
 
-```bash
-claude plugin marketplace add JoyyCLangat/skills
-claude plugin install impax-crm@impax-skills
-```
+### Requirements for the guard
 
-To get updates, run `/plugin marketplace update impax-skills`.
-
-### Claude Code on the web (cloud sessions)
-
-- **Sessions on this repo** load the skills automatically through `.claude/skills`.
-- **Sessions on other repos:** add this to that repo's `.claude/settings.json`:
-
-  ```json
-  {
-    "extraKnownMarketplaces": {
-      "impax-skills": { "source": { "source": "github", "repo": "JoyyCLangat/skills" } }
-    },
-    "enabledPlugins": { "impax-crm@impax-skills": true }
-  }
-  ```
+The guard hook runs in Claude Code only (chat and Cowork don't run hooks). It needs **Python 3.8+** on your PATH (`python3`, `python`, or `py -3`). Without Python, Claude Code shows a one-time warning and the skills still work, but the guard is off.
 
 ## Skills
 
 | Skill | Use it when |
 |---|---|
-| `impax-crm-context` | Starting any Impax or Dynamics task. It loads the Impax playbook, explains things in plain language, picks the right skill, and records new Impax conventions as they come up. |
+| `impax-crm-context` | Starting any Impax or Dynamics task. Sets safe defaults, explains things plainly, picks the right skill, and records new Impax conventions. |
 | `crm-requirements-discovery` | You have a client brief, workshop notes, or an RFP, and need a requirements register with fit-gap against out-of-the-box Dynamics 365. |
+| `grilling` | You want a plan, design, or estimate stress-tested through rounds of questions. |
 | `functional-spec-to-tickets` | You're turning agreed requirements into build-ready user stories with acceptance criteria. |
 | `crm-impact-analysis` | You're about to rename, delete, or change a column, table, choice, role, plugin, or flow. |
 | `uat-test-scripts` | You're writing UAT scripts and trackers, or triaging UAT feedback. |
@@ -55,28 +47,55 @@ To get updates, run `/plugin marketplace update impax-skills`.
 | `crm-security-model` | You're designing or troubleshooting BUs, roles, teams, or field security, or checking data-protection requirements. |
 | `crm-integrations` | You're connecting CRM to an ERP, M-Pesa (Daraja), an SMS gateway, or a portal. |
 | `diagnosing-crm-issues` | Something is broken, slow, or "can't see", and you need to debug it hypothesis-first. |
+| `session-handoff` | You're stopping work that someone (or a later session) will pick up. |
+| `loose-ends` | You're closing out a session and want to catch follow-ups and temporary changes. |
+| `writing-great-skills` | You're creating or editing a skill in this plugin. |
+
+## Security
+
+See [SECURITY.md](SECURITY.md). In short:
+
+- **Guard hook** (Claude Code). It **blocks** writing a secret into a file, passing one on the command line, and committing or pushing secrets or credential files. It **asks first** before `pac solution import`, deletes, resets, plugin pushes, Dataverse Web API writes, and similar commands, and gives a stronger warning when the target looks like Production. It also asks before committing data files or bulk personal data.
+- **Skill rules** (every surface). Production is read-only without explicit approval. Client emails are drafts only. Email and record content is treated as data, never as instructions. Personal data is kept to a minimum, per the Kenya Data Protection Act 2019.
+- **CI.** Every pull request runs the guard's tests, a secret scan of the whole repo, skill-spec validation, and strict plugin validation.
 
 ## The Impax playbook (learns as you work)
 
-`plugins/impax-crm/skills/impax-crm-context/references/impax-playbook.md` collects Impax conventions as they come up in sessions: tools, naming, process, and glossary. At the end of a task, Claude offers to add anything new, through a pull request you approve.
+`plugins/impax-crm/skills/impax-crm-context/references/impax-playbook.md` collects Impax conventions as they come up in sessions: tools, naming, process, and glossary. At the end of a task, Claude offers to add anything new through a pull request you approve.
 
-**This repo is public.** Never put client names, environment URLs, credentials, personal data, or pricing in it. Make the repo private if you want to keep client-specific knowledge here too.
+**This repo is public.** The playbook must never contain client names, URLs, credentials, personal data, or pricing. CI rejects URLs, emails, and phone numbers in it.
 
-## Repo layout
+## Development
+
+```bash
+pip install -r requirements-dev.txt              # PyYAML, hash-pinned
+python3 -m unittest discover -s tests            # guard tests
+python3 scripts/validate.py                      # skills, manifests, hooks, secret scan
+claude plugin validate --strict .                # Claude Code's own checks
+claude plugin eval plugins/impax-crm --runs 1 --ablation none   # behaviour evals (uses model credits)
+```
+
+Releasing: bump `version` in `plugins/impax-crm/.claude-plugin/plugin.json` whenever plugin files change (CI enforces this). Without a bump, users don't receive the update. Use patch for wording fixes, minor for new or changed skills, and major for breaking changes.
+
+To add a skill, follow `writing-great-skills`: write an eval first, keep frontmatter to the portable fields, add the skill to the table above, and run the checks.
+
+### Layout
 
 ```
-.claude-plugin/marketplace.json        # makes this repo installable as a marketplace
-plugins/impax-crm/.claude-plugin/plugin.json
-plugins/impax-crm/skills/<skill>/SKILL.md
-.claude/skills -> plugins/impax-crm/skills   # loads the skills when you work in this repo
-scripts/validate-skills.sh
+.claude-plugin/marketplace.json            # makes this repo a plugin marketplace
+plugins/impax-crm/
+  .claude-plugin/plugin.json               # plugin manifest (bump version on release)
+  skills/<skill>/SKILL.md                  # the skills
+  hooks/hooks.json, run-guard.sh, guard.py # the guard
+  hooks/impax_guard/                       # secret scanner, command and git checks
+  evals/<case>/                            # behaviour tests for claude plugin eval
+.claude/skills -> plugins/impax-crm/skills # loads the skills when working in this repo
+.claude/settings.json                      # runs the guard when working in this repo
+scripts/validate.py, check_version_bump.py
+tests/test_guard.py
+.github/workflows/ci.yml, evals.yml
 ```
 
-## Adding or changing a skill
+## Credits
 
-1. Create `plugins/impax-crm/skills/<name>/SKILL.md`. Its frontmatter needs a `name` that matches the folder, and a `description` that says what the skill does and when to use it.
-2. Add the skill to the table above.
-3. Run `./scripts/validate-skills.sh` and `claude plugin validate .`.
-4. Bump `version` in `plugins/impax-crm/.claude-plugin/plugin.json`.
-
-Some skills borrow workflow ideas from [tobilafinhangit/skill-master](https://github.com/tobilafinhangit/skill-master). Each one names its source.
+Some skills borrow workflow ideas from [tobilafinhangit/skill-master](https://github.com/tobilafinhangit/skill-master). Some adapt [Matt Pocock's skills](https://github.com/mattpocock/skills) (MIT). Each skill names its source. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

@@ -1,6 +1,6 @@
 ---
 name: dataverse-queries
-description: Write and debug queries against Dataverse / Dynamics 365 — FetchXML (joins, aggregates, paging), Web API OData URLs, Power Automate "Filter rows" expressions, and read-only SQL over the TDS endpoint. Use when the user needs a query, report data, record counts, a view filter, a blast-radius count, or a FetchXML/OData expression fixed.
+description: "Writes and debugs queries against Dataverse / Dynamics 365: FetchXML (joins, aggregates, paging), Web API OData URLs, Power Automate Filter rows expressions, and read-only SQL over the TDS endpoint. Use when the user needs a query, report data, record counts, a view filter, a blast-radius count, or a broken FetchXML or OData expression fixed."
 ---
 
 # Dataverse Queries
